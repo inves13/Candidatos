@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Quem Você Apoia</title>
+<style>
+    * { box-sizing: border-box; }
+    html,body { height: 100%; margin: 0; }
+    body {
+        font-family: Arial, sans-serif;
+        background: #111; /* fundo escuro */
+        color: #fff;
+        text-align: center;
+    }
+
+    /* Título fixo no topo */
+    header {
+        background: #2b2b2b;
+        padding: 14px 10px;
+        border-bottom: 2px solid #333;
+    }
+
+    /* CAIXA AMARELA do título (só aqui mudei) */
+    header h1 {
+        margin: 0;
+        font-size: 26px;
+        letter-spacing: 1px;
+        font-weight: 800;
+        color: #111; /* texto escuro para contraste com amarelo */
+        background: linear-gradient(90deg, #FFD54F 0%, #FFC107 100%); /* amarelo bonito */
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    }
+
+    /* Container com 2 cards lado a lado, cada um com 50% da largura */
+    .container {
+        display: flex;
+        flex-wrap: nowrap;           /* impedir quebra em coluna */
+        gap: 8px;                    /* pequeno espaço entre os cards */
+        padding: 16px;
+        height: calc(100vh - 66px);  /* altura total da janela menos a altura do header (ajuste se necessário) */
+    }
+
+    /* Cada card ocupa metade da tela */
+    .card {
+        flex: 0 0 50%;
+        max-width: 50%;
+        background: #222;
+        border-radius: 14px;
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+
+    /* Imagem com altura proporcional e mesma para ambos */
+    .card img {
+        width: 100%;
+        height: 44%;        /* imagem ocupa 44% da altura do card — garante mesma altura para ambas */
+        object-fit: cover;  /* recorta mantendo proporção */
+        border-radius: 10px;
+        border: 2px solid rgba(255,255,255,0.06);
+    }
+
+    /* corpo do card: distribui o espaço para alinhar botão embaixo */
+    .card .body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: calc(56% - 28px); /* resto da altura do card (com padding) */
+        width: 100%;
+        padding-top: 12px;
+    }
+
+    .name {
+        font-size: 26px;
+        font-weight: 800;
+        margin: 6px 0;
+        color: #fff;
+    }
+
+    .score {
+        font-size: 28px;
+        color: #ffd84d;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+        margin: 8px 0;
+    }
+
+    .gift {
+        font-size: 18px;
+        color: #ffcc33;
+        margin: 6px 0 12px 0;
+    }
+
+    .btn-wrap {
+        width: 100%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    button {
+        background: #ff5648;
+        border: none;
+        color: #fff;
+        padding: 12px 26px;
+        border-radius: 12px;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: 0 6px 18px rgba(255,86,72,0.12);
+    }
+    button:active { transform: translateY(1px); }
+
+    /* Ajustes para telas muito pequenas: reduzir fontes e padding, mas manter lado-a-lado */
+    @media (max-height: 600px) {
+        .card img { height: 40%; }
+        .name { font-size: 20px; }
+        .score { font-size: 22px; }
+        button { padding: 10px 18px; font-size: 15px; }
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>QUEM VOCÊ APOIA???</h1>
+    </header>
+
+    <div class="container">
+        <!-- Card Bolsonaro -->
+        <div class="card">
+            <img src="bolsonaro.jpg" alt="Bolsonaro">
+            <div class="body">
+                <div>
+                    <div class="name">BOLSONARO</div>
+                    <div class="score" id="score1">0</div>
+                    <div class="gift">🧉 Chimarrão</div>
+                </div>
+
+                <div class="btn-wrap">
+                    <button onclick="addVote(1)">Mandar 🧉</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Lula -->
+        <div class="card">
+            <img src="lula.jpg" alt="Lula">
+            <div class="body">
+                <div>
+                    <div class="name">LULA</div>
+                    <div class="score" id="score2">0</div>
+                    <div class="gift">🌹 Rosa</div>
+                </div>
+
+                <div class="btn-wrap">
+                    <button onclick="addVote(2)">Mandar 🌹</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    let votos1 = 0;
+    let votos2 = 0;
+
+    function addVote(candidato) {
+        if (candidato === 1) {
+            votos1++;
+            document.getElementById("score1").innerText = votos1;
+        } else {
+            votos2++;
+            document.getElementById("score2").innerText = votos2;
+        }
+    }
+</script>
+</body>
+</html>
