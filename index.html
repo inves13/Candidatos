@@ -8,120 +8,172 @@
     * { box-sizing: border-box; }
     html,body { height: 100%; margin: 0; }
     body {
-        font-family: Arial, sans-serif;
-        background: #111; /* fundo escuro */
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #111);
         color: #fff;
         text-align: center;
+        overflow-x: hidden;
     }
 
-    /* Título fixo no topo */
     header {
-        background: #2b2b2b;
+        background: #222;
         padding: 14px 10px;
         border-bottom: 2px solid #333;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
-
-    /* CAIXA AMARELA do título (só aqui mudei) */
     header h1 {
         margin: 0;
         font-size: 26px;
-        letter-spacing: 1px;
         font-weight: 800;
-        color: #111; /* texto escuro para contraste com amarelo */
-        background: linear-gradient(90deg, #FFD54F 0%, #FFC107 100%); /* amarelo bonito */
+        color: #111;
+        background: linear-gradient(90deg, #FFD54F 0%, #FFC107 100%);
         display: inline-block;
-        padding: 10px 20px;
-        border-radius: 10px;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+        padding: 12px 26px;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.4);
     }
 
-    /* Container com 2 cards lado a lado, cada um com 50% da largura */
     .container {
         display: flex;
-        flex-wrap: nowrap;           /* impedir quebra em coluna */
-        gap: 8px;                    /* pequeno espaço entre os cards */
-        padding: 16px;
-        height: calc(100vh - 66px);  /* altura total da janela menos a altura do header (ajuste se necessário) */
+        flex-wrap: nowrap;
+        gap: 16px;
+        padding: 20px;
+        justify-content: center;
+        height: calc(100vh - 220px);
     }
 
-    /* Cada card ocupa metade da tela */
     .card {
         flex: 0 0 50%;
         max-width: 50%;
-        background: #222;
-        border-radius: 14px;
-        padding: 14px;
+        background: #1e1e1e;
+        border-radius: 16px;
+        padding: 18px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+        transition: transform 0.3s ease;
     }
+    .card:hover { transform: translateY(-6px); }
 
-    /* Imagem com altura proporcional e mesma para ambos */
     .card img {
         width: 100%;
-        height: 44%;        /* imagem ocupa 44% da altura do card — garante mesma altura para ambas */
-        object-fit: cover;  /* recorta mantendo proporção */
-        border-radius: 10px;
-        border: 2px solid rgba(255,255,255,0.06);
+        height: 220px;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 2px solid rgba(255,255,255,0.08);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.4);
     }
 
-    /* corpo do card: distribui o espaço para alinhar botão embaixo */
     .card .body {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-between;
-        height: calc(56% - 28px); /* resto da altura do card (com padding) */
         width: 100%;
-        padding-top: 12px;
+        padding-top: 14px;
     }
 
     .name {
-        font-size: 26px;
-        font-weight: 800;
+        font-size: 24px;
+        font-weight: 900;
         margin: 6px 0;
         color: #fff;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.6);
     }
 
     .score {
-        font-size: 28px;
+        font-size: 26px;
         color: #ffd84d;
-        text-shadow: 0 2px 10px rgba(0,0,0,0.7);
-        margin: 8px 0;
+        margin: 6px 0;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+
+    .percent {
+        font-size: 16px;
+        color: #aaa;
+        margin-bottom: 8px;
     }
 
     .gift {
-        font-size: 18px;
-        color: #ffcc33;
-        margin: 6px 0 12px 0;
+        font-size: 20px;
+        margin: 6px 0 14px 0;
     }
 
-    .btn-wrap {
-        width: 100%;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-    }
+    .btn-wrap { margin-top: 10px; }
 
     button {
-        background: #ff5648;
         border: none;
         color: #fff;
         padding: 12px 26px;
-        border-radius: 12px;
+        border-radius: 14px;
         font-size: 16px;
         cursor: pointer;
-        box-shadow: 0 6px 18px rgba(255,86,72,0.12);
+        transition: all 0.3s ease;
     }
-    button:active { transform: translateY(1px); }
+    button:active { transform: translateY(2px); }
 
-    /* Ajustes para telas muito pequenas: reduzir fontes e padding, mas manter lado-a-lado */
-    @media (max-height: 600px) {
-        .card img { height: 40%; }
-        .name { font-size: 20px; }
-        .score { font-size: 22px; }
-        button { padding: 10px 18px; font-size: 15px; }
+    .btn-bolsonaro {
+        background: linear-gradient(135deg, #32CD32, #7CFC00);
+        box-shadow: 0 6px 18px rgba(124,252,0,0.35);
+    }
+    .btn-lula {
+        background: linear-gradient(135deg, #4A90E2, #6A5ACD);
+        box-shadow: 0 6px 18px rgba(74,144,226,0.35);
+    }
+
+    .btn-reset {
+        margin-top: 20px;
+        background: #444;
+        box-shadow: 0 6px 18px rgba(255,255,255,0.2);
+    }
+
+    .progress {
+        width: 90%;
+        max-width: 650px;
+        height: 22px;
+        background: #333;
+        border-radius: 12px;
+        margin: 20px auto;
+        overflow: hidden;
+        display: flex;
+        box-shadow: inset 0 2px 6px rgba(0,0,0,0.6);
+    }
+    .bar1 {
+        background: linear-gradient(90deg, #32CD32, #7CFC00);
+        height: 100%;
+        width: 50%;
+        transition: width 0.5s ease;
+    }
+    .bar2 {
+        background: linear-gradient(90deg, #4A90E2, #6A5ACD);
+        height: 100%;
+        width: 50%;
+        transition: width 0.5s ease;
+    }
+
+    .anim {
+        position: absolute;
+        font-size: 28px;
+        animation: fly 1s ease-out forwards;
+        pointer-events: none;
+    }
+    @keyframes fly {
+        from { opacity: 1; transform: translateY(0); }
+        to { opacity: 0; transform: translateY(-80px); }
+    }
+
+    .selectors {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+    }
+    select {
+        padding: 6px 12px;
+        border-radius: 8px;
+        border: none;
+        font-size: 16px;
     }
 </style>
 </head>
@@ -135,14 +187,12 @@
         <div class="card">
             <img src="250px-Presidente_Jair_Messias_Bolsonaro_(cropped).jpg" alt="Bolsonaro">
             <div class="body">
-                <div>
-                    <div class="name">BOLSONARO</div>
-                    <div class="score" id="score1">0</div>
-                    <div class="gift">🧉 Chimarrão</div>
-                </div>
-
+                <div class="name">BOLSONARO</div>
+                <div class="score" id="score1">0</div>
+                <div class="percent" id="percent1">0%</div>
+                <div class="gift" id="giftText1">🧉 Chimarrão</div>
                 <div class="btn-wrap">
-                    <button onclick="addVote(1)">Mandar 🧉</button>
+                    <button class="btn-bolsonaro" id="btn1" onclick="addVote(1,event)">Mandar 🧉</button>
                 </div>
             </div>
         </div>
@@ -151,32 +201,112 @@
         <div class="card">
             <img src="Foto_oficial_de_Luiz_Inácio_Lula_da_Silva_(ombros)_denoise.jpg" alt="Lula">
             <div class="body">
-                <div>
-                    <div class="name">LULA</div>
-                    <div class="score" id="score2">0</div>
-                    <div class="gift">🌹 Rosa</div>
-                </div>
-
+                <div class="name">LULA</div>
+                <div class="score" id="score2">0</div>
+                <div class="percent" id="percent2">0%</div>
+                <div class="gift" id="giftText2">🌹 Rosa</div>
                 <div class="btn-wrap">
-                    <button onclick="addVote(2)">Mandar 🌹</button>
+                    <button class="btn-lula" id="btn2" onclick="addVote(2,event)">Mandar 🌹</button>
                 </div>
             </div>
         </div>
     </div>
 
-<script>
-    let votos1 = 0;
-    let votos2 = 0;
+    <!-- Barra de progresso -->
+    <div class="progress">
+        <div class="bar1" id="bar1"></div>
+        <div class="bar2" id="bar2"></div>
+    </div>
 
-    function addVote(candidato) {
-        if (candidato === 1) {
-            votos1++;
-            document.getElementById("score1").innerText = votos1;
+    <!-- Botão reset -->
+    <button class="btn-reset" onclick="resetarVotos()">🔄 Resetar Votos</button>
+
+    <!-- Seletor de presentes (agora embaixo do reset) -->
+    <div class="selectors">
+        <div>
+            <label>Presente Bolsonaro:</label>
+            <select id="giftBolsonaro" onchange="mudarPresente(1)">
+                <option value="🧉">🧉 Chimarrão</option>
+                <option value="❤️">❤️ Coração</option>
+                <option value="🚀">🚀 Foguete</option>
+                <option value="🎁">🎁 Presente</option>
+            </select>
+        </div>
+        <div>
+            <label>Presente Lula:</label>
+            <select id="giftLula" onchange="mudarPresente(2)">
+                <option value="🌹">🌹 Rosa</option>
+                <option value="🎤">🎤 Microfone</option>
+                <option value="🚗">🚗 Carro</option>
+                <option value="🔥">🔥 Fogo</option>
+            </select>
+        </div>
+    </div>
+
+<script>
+    let votos1 = parseInt(localStorage.getItem("votos1")) || 0;
+    let votos2 = parseInt(localStorage.getItem("votos2")) || 0;
+
+    let presente1 = "🧉";
+    let presente2 = "🌹";
+
+    function atualizarUI() {
+        document.getElementById("score1").innerText = votos1;
+        document.getElementById("score2").innerText = votos2;
+
+        let total = votos1 + votos2;
+        let p1 = total ? Math.round((votos1/total)*100) : 0;
+        let p2 = total ? 100 - p1 : 0;
+
+        document.getElementById("percent1").innerText = p1 + "%";
+        document.getElementById("percent2").innerText = p2 + "%";
+
+        document.getElementById("bar1").style.width = p1 + "%";
+        document.getElementById("bar2").style.width = p2 + "%";
+    }
+
+    function mudarPresente(candidato) {
+        if(candidato === 1){
+            presente1 = document.getElementById("giftBolsonaro").value;
+            document.getElementById("giftText1").innerText = presente1;
+            document.getElementById("btn1").innerText = "Mandar " + presente1;
         } else {
-            votos2++;
-            document.getElementById("score2").innerText = votos2;
+            presente2 = document.getElementById("giftLula").value;
+            document.getElementById("giftText2").innerText = presente2;
+            document.getElementById("btn2").innerText = "Mandar " + presente2;
         }
     }
+
+    function addVote(candidato, event) {
+        if (candidato === 1) {
+            votos1++;
+            localStorage.setItem("votos1", votos1);
+        } else {
+            votos2++;
+            localStorage.setItem("votos2", votos2);
+        }
+        atualizarUI();
+
+        // usa presente selecionado
+        const emoji = candidato === 1 ? presente1 : presente2;
+        const elem = document.createElement("div");
+        elem.className = "anim";
+        elem.innerText = emoji;
+        document.body.appendChild(elem);
+        elem.style.left = (event.pageX - 10) + "px";
+        elem.style.top = (event.pageY - 10) + "px";
+        setTimeout(()=> elem.remove(), 1000);
+    }
+
+    function resetarVotos() {
+        votos1 = 0;
+        votos2 = 0;
+        localStorage.removeItem("votos1");
+        localStorage.removeItem("votos2");
+        atualizarUI();
+    }
+
+    atualizarUI();
 </script>
 </body>
 </html>
